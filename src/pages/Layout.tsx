@@ -3,6 +3,9 @@ import {
   Button,
   Divider,
 } from '@nextui-org/react';
+import {
+  Link,
+} from 'react-router-dom';
 import logoInline from '../assets/logoInline.svg';
 import logo from '../assets/logo.svg';
 
@@ -24,7 +27,9 @@ function Layout() {
           size="md"
           variant="light"
         >
-          Loja
+          <Link to={'/kit-list'}>
+            Loja
+          </Link>
         </Button>
         <Divider
           className="mx-2 bg-white w-[2px] h-6"
@@ -36,7 +41,9 @@ function Layout() {
           size="md"
           variant="light"
         >
-          Login
+          <Link to={'/welcome'}>
+            Login
+          </Link>
         </Button>
         <Divider
           className="mx-2 bg-white w-[2px] h-6"
@@ -54,7 +61,7 @@ function Layout() {
         </div>
       </header>
 
-      <main className="flex-1">
+      <main className="grow w-full bg-slate-100">
         <Outlet />
       </main>
 
