@@ -1,24 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Card } from '@nextui-org/react';
+import logo from './assets/logo.svg';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex h-screen justify-center items-center bg-gray-100 px-9">
+      <Card className="text-center p-10">
+        <img src={logo} className="w-40 h-40 mx-auto" alt="logo" />
+      </Card>
     </div>
   );
 }

@@ -4,13 +4,20 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
+import { NextUIProvider } from '@nextui-org/react';
 import './index.css';
+
 import App from './App';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+  },
+  {
+    path: '/home',
+    element: <Home />,
   },
 ]);
 
@@ -20,6 +27,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <NextUIProvider>
+      <RouterProvider router={router} />
+    </NextUIProvider>
   </React.StrictMode>
 );
