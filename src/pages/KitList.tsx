@@ -38,13 +38,13 @@ function KitList() {
           <CardBody className="absolute z-20 top-1">
             <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md-gap-6 items-center justify-center">
               <div className="col-span-6">
-                <p className="text-2xl mt-2 ml-3 font-md text-white/90">
+                <p className="text-2xl mt-2 ml-3 font-semibold text-white">
                   {kit.description}
                 </p>
               </div>
             </div>
           </CardBody>
-          <CardFooter className="flex absolute z-20 bottom-0 border-t-1 border-default-600 dark:border-default-100">
+          <CardFooter className="flex absolute z-20 bottom-0 border-t-1 border-default-600 dark:border-default-100 backdrop-blur-sm">
             <div className="flex flex-grow gap-2 flex-col md:flex-row items-right">
               <div className="flex flex-col w-full text-base font-bold text-white text-right md:text-center">
                 {kit.name}
