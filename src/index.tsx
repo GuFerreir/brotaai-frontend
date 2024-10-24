@@ -8,16 +8,23 @@ import { NextUIProvider } from '@nextui-org/react';
 import './index.css';
 
 import App from './App';
-import Home from './pages/Home';
+import Layout from './pages/Layout';
+import KitList from './pages/KitList';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Layout />,
+    children: [
+      {
+        path: '/kit-list',
+        element: <KitList />,
+      },
+    ],
   },
   {
-    path: '/home',
-    element: <Home />,
+    path: '/welcome',
+    element: <App />,
   },
 ]);
 
