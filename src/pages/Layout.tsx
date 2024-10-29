@@ -1,11 +1,11 @@
-import { Outlet } from 'react-router-dom';
+import {
+  Outlet,
+  Link,
+} from 'react-router-dom';
 import {
   Button,
   Divider,
 } from '@nextui-org/react';
-import {
-  Link,
-} from 'react-router-dom';
 import logoInline from '../assets/logoInline.svg';
 import logo from '../assets/logo.svg';
 

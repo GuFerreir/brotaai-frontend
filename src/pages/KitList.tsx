@@ -1,5 +1,8 @@
 import React from 'react';
 import {
+  Link,
+} from 'react-router-dom';
+import {
   Button,
   Card,
   CardBody,
@@ -51,10 +54,14 @@ function KitList() {
               </div>
               <div className="flex flex-col md:flex-0">
                 <Button
-                  className="hover:outline hover:outline-secondary md:px-10 bg-gradient-to-tr from-primary to-secondary text-white font-bold text-base shadow-lg"
+                  className="hover:outline hover:outline-accent md:px-10 bg-gradient-to-tr from-primary to-secondary text-white font-bold text-base shadow-lg"
                   data-hover={false}
                   size="sm"
-                >Clique para saber mais!</Button>
+                >
+                  <Link to={'/kit'}>
+                    Clique para saber mais!
+                  </Link>
+                </Button>
               </div>
             </div>
           </CardFooter>

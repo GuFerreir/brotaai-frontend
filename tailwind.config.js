@@ -13,7 +13,7 @@ module.exports = {
       colors: {
        primary: '#298D6F',
        secondary: '#4EC29F',
-       accent: '#dc8967',
+       accent: '#4af3c0',
       },
 
     },
@@ -24,12 +24,12 @@ module.exports = {
       light: {
         primary: '#298D6F',
         secondary: '#4EC29F',
-        accent: '#dc8967',
+        accent: '#4af3c0',
       },
       dark: {
         primary: '#298D6F',
         secondary: '#4EC29F',
-        accent: '#dc8967',
+        accent: '#4af3c0',
       },
     },
   })],

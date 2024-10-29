@@ -10,6 +10,7 @@ import './index.css';
 import App from './App';
 import Layout from './pages/Layout';
 import KitList from './pages/KitList';
+import Kit from './pages/Kit';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/kit-list',
         element: <KitList />,
+      },
+      {
+        path: '/kit',
+        element: <Kit />,
       },
     ],
   },
