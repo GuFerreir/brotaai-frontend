@@ -41,6 +41,21 @@ function Layout() {
           size="md"
           variant="light"
         >
+          <Link to={'/user'}>
+            Minha Conta
+          </Link>
+        </Button>
+        {/* teste
+        <Divider
+          className="mx-2 bg-white w-[2px] h-6"
+          orientation="vertical"
+        />
+        <Button
+          className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+          color="primary"
+          size="md"
+          variant="light"
+        >
           <Link to={'/welcome'}>
             Login
           </Link>
@@ -57,7 +72,7 @@ function Layout() {
         >
           Cadastre-se
         </Button>
-          
+        */}
         </div>
       </header>
 
