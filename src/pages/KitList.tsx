@@ -54,8 +54,7 @@ function KitList() {
               </div>
               <div className="flex flex-col md:flex-0">
                 <Button
-                  className="hover:outline hover:outline-accent md:px-10 bg-gradient-to-tr from-primary to-secondary text-white font-bold text-base shadow-lg"
-                  data-hover={false}
+                  className="md:px-10 tracking-wide bg-gradient-to-tr from-primary to-secondary text-white font-bold text-base shadow-lg"
                   size="sm"
                 >
                   <Link to={'/kit'}>
