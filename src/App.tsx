@@ -1,14 +1,42 @@
 import React from 'react';
-import { Card } from '@nextui-org/react';
-import logo from './assets/logo.svg';
+import { createBrowserRouter, RouterProvider, useNavigate } from 'react-router-dom';
+import { NextUIProvider } from '@nextui-org/react';
+import './global.css';
+
+import Layout from './pages/Layout';
+import KitList from './pages/KitList';
+import Kit from './pages/Kit';
+import UserProfile from './pages/UserProfile';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '/kit-list',
+        element: <KitList />,
+      },
+      {
+        path: '/kit',
+        element: <Kit />,
+      },
+      {
+        path: '/user',
+        element: <UserProfile />,
+      },
+    ],
+  },
+  {
+    path: '/welcome',
+  },
+]);
 
 function App() {
   return (
-    <div className="flex h-screen justify-center items-center bg-slate-100 px-9">
-      <Card className="text-center p-10">
-        <img src={logo} className="w-40 h-40 mx-auto" alt="logo" />
-      </Card>
-    </div>
+    <NextUIProvider>
+      <RouterProvider router={router} />
+    </NextUIProvider>
   );
 }
 

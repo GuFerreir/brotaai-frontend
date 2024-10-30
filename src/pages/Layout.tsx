@@ -1,15 +1,25 @@
 import {
   Outlet,
-  Link,
+  useNavigate,
 } from 'react-router-dom';
 import {
   Button,
   Divider,
+  useDisclosure,
 } from '@nextui-org/react';
 import logoInline from '../assets/logoInline.svg';
 import logo from '../assets/logo.svg';
+import SideBar from '../components/SideBar';
+import {
+  FaList,
+  FaUser,
+  FaHome,
+} from "react-icons/fa";
 
 function Layout() {
+  const disclosure = useDisclosure();
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="flex flex-col justify-center items-center">
@@ -17,62 +27,96 @@ function Layout() {
           className="w-full bg-primary py-4"
         >
           <img src={logoInline} className="w-40 h-15 mx-auto" alt="logo" />
+          <SideBar disclosure={disclosure}></SideBar>
         </div>
         <div
           className="w-full flex bg-secondary justify-center items-center py-2"
         >
-        <Button
-          className="uppercase font-mono text-white text-lg font-medium tracking-widest"
-          color="primary"
-          size="md"
-          variant="light"
-        >
-          <Link to={'/kit-list'}>
-            Loja
-          </Link>
-        </Button>
-        <Divider
-          className="mx-2 bg-white w-[2px] h-6"
-          orientation="vertical"
-        />
-        <Button
-          className="uppercase font-mono text-white text-lg font-medium tracking-widest"
-          color="primary"
-          size="md"
-          variant="light"
-        >
-          <Link to={'/user'}>
-            Minha Conta
-          </Link>
-        </Button>
-        {/* teste
-        <Divider
-          className="mx-2 bg-white w-[2px] h-6"
-          orientation="vertical"
-        />
-        <Button
-          className="uppercase font-mono text-white text-lg font-medium tracking-widest"
-          color="primary"
-          size="md"
-          variant="light"
-        >
-          <Link to={'/welcome'}>
-            Login
-          </Link>
-        </Button>
-        <Divider
-          className="mx-2 bg-white w-[2px] h-6"
-          orientation="vertical"
-        />
-        <Button
-          className="uppercase font-mono text-white text-lg font-medium tracking-widest"
-          color="primary"
-          size="md"
-          variant="light"
-        >
-          Cadastre-se
-        </Button>
-        */}
+          <Button
+            variant="bordered"
+            onPress={() => disclosure.onOpen()}
+            className="text-white border-white md:border-none md:mr-4"
+            isIconOnly
+          >
+            <FaList />
+          </Button>
+          <Divider
+            className="mx-2 bg-white w-[2px] h-6"
+            orientation="vertical"
+          />
+          <div className="contents md:hidden">
+            <Button
+              variant="bordered"
+              className="text-white border-white"
+              isIconOnly
+              onPress={() => navigate('/kit-list')}
+            >
+                <FaHome />
+            </Button>
+            <Divider
+              className="mx-2 bg-white w-[2px] h-6"
+              orientation="vertical"
+            />
+            <Button
+              variant="bordered"
+              className="text-white border-white"
+              isIconOnly
+              onPress={() => navigate('/user')}
+            >
+                <FaUser />
+            </Button>
+          </div>
+          <div className="contents max-md:hidden">
+            <Button
+              className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+              color="primary"
+              size="md"
+              variant="light"
+              onPress={() => navigate('/kit-list')}
+            >
+              Loja
+            </Button>
+            <Divider
+              className="mx-2 bg-white w-[2px] h-6"
+              orientation="vertical"
+            />
+            <Button
+              className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+              color="primary"
+              size="md"
+              variant="light"
+              onPress={() => navigate('/user')}
+            >
+              Minha Conta
+            </Button>
+            {/* teste
+            <Divider
+              className="mx-2 bg-white w-[2px] h-6"
+              orientation="vertical"
+            />
+            <Button
+              className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+              color="primary"
+              size="md"
+              variant="light"
+              onPress={() => navigate('/welcome')}
+            >
+              Login
+            </Button>
+            <Divider
+              className="mx-2 bg-white w-[2px] h-6"
+              orientation="vertical"
+            />
+            <Button
+              className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+              color="primary"
+              size="md"
+              variant="light"
+            >
+              Cadastre-se
+            </Button>
+            */}
+          </div>
         </div>
       </header>
 
