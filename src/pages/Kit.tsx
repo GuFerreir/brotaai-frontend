@@ -40,12 +40,14 @@ const kit = {
           image: placeholderImg,
           maxQuantity: 20,
           minQuantity: 5,
+          description: 'O adubo é essencial para enriquecer o solo com os nutrientes necessários para o desenvolvimento inicial das plantas. Ele ajuda a melhorar a estrutura do solo e a retenção de umidade, proporcionando um ambiente adequado para as raízes.'
         },
         {
           name: 'Calcário',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'O calcário é utilizado para corrigir a acidez do solo, garantindo um pH adequado para o cultivo de tomate. Esse ajuste permite que as plantas absorvam melhor os nutrientes e cresçam de forma saudável.'
         },
       ],
       description: 'Preparação do solo: arar o terreno e aplicar corretivos e fertilizantes.',
@@ -60,6 +62,7 @@ const kit = {
           image: placeholderImg,
           maxQuantity: 100,
           minQuantity: 30,
+          description: 'As sementes de tomate de alta qualidade garantem o início do cultivo com plantas saudáveis e vigorosas. É importante escolher sementes certificadas para assegurar a uniformidade e a produtividade do plantio.'
         },
       ],
       description: 'Plantio: semear as sementes de tomate, garantindo espaçamento adequado e irrigação.',
@@ -74,48 +77,56 @@ const kit = {
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'O fertilizante NPK fornece nitrogênio, fósforo e potássio, elementos essenciais para o crescimento das plantas. Ele auxilia no desenvolvimento das raízes, flores e frutos, promovendo uma colheita abundante.'
         },
         {
           name: 'Insumos contra pragas',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'Os insumos contra pragas ajudam a proteger as plantas de tomate contra insetos e doenças, mantendo-as saudáveis durante o crescimento. Esses produtos são essenciais para evitar perdas de produtividade.'
         },
         {
           name: 'Insumos contra pragas',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'Os insumos contra pragas ajudam a proteger as plantas de tomate contra insetos e doenças, mantendo-as saudáveis durante o crescimento. Esses produtos são essenciais para evitar perdas de produtividade.'
         },
         {
           name: 'Insumos contra pragas',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'Os insumos contra pragas ajudam a proteger as plantas de tomate contra insetos e doenças, mantendo-as saudáveis durante o crescimento. Esses produtos são essenciais para evitar perdas de produtividade.'
         },
         {
           name: 'Insumos contra pragas',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'Os insumos contra pragas ajudam a proteger as plantas de tomate contra insetos e doenças, mantendo-as saudáveis durante o crescimento. Esses produtos são essenciais para evitar perdas de produtividade.'
         },
         {
           name: 'Insumos contra pragas',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'Os insumos contra pragas ajudam a proteger as plantas de tomate contra insetos e doenças, mantendo-as saudáveis durante o crescimento. Esses produtos são essenciais para evitar perdas de produtividade.'
         },
         {
           name: 'Insumos contra pragas',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'Os insumos contra pragas ajudam a proteger as plantas de tomate contra insetos e doenças, mantendo-as saudáveis durante o crescimento. Esses produtos são essenciais para evitar perdas de produtividade.'
         },
         {
           name: 'Insumos contra pragas',
           image: placeholderImg,
           maxQuantity: 10,
           minQuantity: 2,
+          description: 'Os insumos contra pragas ajudam a proteger as plantas de tomate contra insetos e doenças, mantendo-as saudáveis durante o crescimento. Esses produtos são essenciais para evitar perdas de produtividade.'
         },
       ],
       description: 'Crescimento e manutenção: aplicar fertilizantes e controlar pragas durante o crescimento das plantas.',
