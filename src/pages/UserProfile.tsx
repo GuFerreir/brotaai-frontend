@@ -113,7 +113,7 @@ const PurchaseGroups = ({ setSelectedKit, openModal }: PurchaseGroupsProps) => {
                   />
                 </div>
                 <div className='flex flex-col md:mt-0 mt-4'>
-                  <p className="mb-2 font-bold text-xl text-primary">
+                  <p className="capitalize mb-2 font-bold text-xl text-primary">
                     {kit.name}
                   </p>
                   <div className="text-sm flex flex-row">
@@ -166,6 +166,30 @@ type UserKitModalProps = {
 const UserKitModal = ({ userKit, disclosure }: UserKitModalProps) => {
   const { isOpen, onClose } = disclosure;
 
+  const statusList = [
+    {
+      name: 'Pedido Realizado',
+      date: '10/10/2024',
+      description: 'Seu pedido foi realizado com sucesso e está em processamento.',
+    },
+    {
+      name: 'Pagamento Confirmado',
+      date: '11/10/2024',
+      description: 'O pagamento foi confirmado. Estamos preparando seu kit para envio.',
+    },
+    {
+      name: 'Pedido Enviado',
+      date: '13/10/2024',
+      description: 'Seu pedido foi enviado e está a caminho do endereço de entrega.',
+    },
+    {
+      name: 'Pedido Entregue',
+      date: '15/10/2024',
+      description: 'Seu kit foi entregue com sucesso no endereço indicado.',
+    },
+  ];
+
+
   const images = userKit.images.map((url) => {
     return {
       original: url,
@@ -179,6 +203,7 @@ const UserKitModal = ({ userKit, disclosure }: UserKitModalProps) => {
       isOpen={isOpen}
       onClose={onClose}
       backdrop="blur"
+      scrollBehavior="inside"
     >
       <ModalContent>
         {() => (
@@ -195,7 +220,7 @@ const UserKitModal = ({ userKit, disclosure }: UserKitModalProps) => {
                   </Card>
                 </div>
                 <div className="flex flex-col h-full p-5 md:p-10">
-                  <h1 className="mb-5 font-bold text-2xl text-primary drop-shadow-xl">
+                  <h1 className="mb-5 font-bold text-2xl text-primary drop-shadow-xl capitalize">
                     {userKit.name}
                   </h1>
                   <div className='flex flex-col md:mt-0 mt-4'>
@@ -232,11 +257,35 @@ const UserKitModal = ({ userKit, disclosure }: UserKitModalProps) => {
                       color="danger"
                       variant="bordered"
                       size="md"
+                      isDisabled
                     >
                        Sair do Grupo
                    </Button>
                  </div>
                 </div>
+              </div>
+              <div className="-my-6">
+                {statusList.map((status) => (
+                  <div className="relative pl-8 sm:pl-32 py-6 group">
+                    <div className={`
+                      font-caveat font-semibold drop-shadow-md text-2xl text-primary mb-1 sm:mb-0
+                      ${status.name === 'Pedido Realizado' ? 'text-blue-600' : ''}
+                      ${status.name === 'Pagamento Confirmado' ? 'text-primary' : ''}
+                      ${status.name === 'Pedido Enviado' ? 'text-warning' : ''}
+                      ${status.name === 'Pedido Entregue' ? 'text-green-400' : ''}
+                    `}>
+                      {status.name}
+                    </div>
+                    <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-primary after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                      <time className="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-white bg-gradient-to-tr from-primary to-secondary rounded-full">
+                        {status.date}
+                      </time>
+                    </div>
+                    <div className="text-slate-500">
+                      {status.description}
+                    </div>
+                  </div>
+                ))}
               </div>
             </ModalBody>
           </>
