@@ -54,7 +54,7 @@ function KitList() {
               </div>
               <div className="flex flex-col md:flex-0">
                 <Button
-                  className="md:px-10 tracking-wide bg-gradient-to-tr from-primary to-secondary text-white font-bold text-base shadow-lg"
+                  className="md:px-10 tracking-wide bg-gradient-to-tr from-secondary to-primary text-white font-bold text-base shadow-lg"
                   size="sm"
                 >
                   <Link to={'/kit'}>
