@@ -5,12 +5,13 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
-import './index.css';
+import './global.css';
 
 import App from './App';
 import Layout from './pages/Layout';
 import KitList from './pages/KitList';
 import Kit from './pages/Kit';
+import UserProfile from './pages/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/kit',
         element: <Kit />,
+      },
+      {
+        path: '/user',
+        element: <UserProfile />,
       },
     ],
   },

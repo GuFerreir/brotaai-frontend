@@ -175,7 +175,7 @@ export default function Kit() {
     <Card className="bg-slate-100 flex-row md:max-w-[80%] grid grid-cols-1 xl:grid-cols-2 mx-auto mt-10 mb-10">
       <div className="col-span-1 p-5 md:p-10">
         <Card
-          className="bg-slate-100 xl:h-[600px]"
+          className="bg-slate-100 xl:h-[500px]"
           isBlurred={true}
           shadow="none"
         >
