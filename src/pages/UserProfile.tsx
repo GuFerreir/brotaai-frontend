@@ -273,10 +273,13 @@ const UserKitModal = ({ userKit, disclosure }: UserKitModalProps) => {
                 <h1 className="text-2xl font-bold text-slate-700">
                   Histórico do pedido:
                 </h1>
-                {statusList.map((status) => (
-                  <div className="relative pl-8 sm:pl-32 py-6 group mx-auto">
+                {statusList.map((status, index) => (
+                  <div
+                    key={index}
+                    className="relative pl-8 sm:pl-32 py-6 group mx-auto"
+                  >
                     <div className={`
-                      font-caveat font-semibold drop-shadow-sm text-2xl text-primary mb-1 sm:mb-0
+                      font-caveat font-semibold drop-shadow-sm text-2xl mb-1 sm:mb-0
                       ${status.name === 'Pedido Realizado' ? 'text-blue-600' : ''}
                       ${status.name === 'Pagamento Confirmado' ? 'text-primary' : ''}
                       ${status.name === 'Pedido Enviado' ? 'text-warning' : ''}
