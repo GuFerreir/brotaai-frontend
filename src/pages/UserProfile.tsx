@@ -16,6 +16,7 @@ import {
 } from 'react-icons/fa';
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import authStore, { User } from '../stores/auth';
 
 const userKits = [
   {
@@ -41,7 +42,11 @@ const userKits = [
   },
 ]
 
-const UserInfo = () => {
+type UserInfoProps = {
+  user: User | null,
+}
+
+const UserInfo = ({ user }: UserInfoProps) => {
   return (
     <Card
       className="p-8 mt-6"
@@ -63,15 +68,15 @@ const UserInfo = () => {
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="flex items-center mb-2 mt-2">
             <FaUser className="text-secondary mr-2 text-xl" />
-            <p>Nome Completo do Usuário</p>
+            <p>{user?.name}</p>
           </div>
           <div className="flex items-center mb-2">
             <FaMapMarkerAlt className="text-secondary mr-2 text-xl" />
-            <p>Rua de São Paulo, nº 0 - São Paulo, SP 00000-000</p>
+            <p>{user?.address}</p>
           </div>
           <div className="flex items-center mb-2">
             <FaEnvelope className="text-secondary mr-2 text-xl" />
-            <p>email@usp.br</p>
+            <p>{user?.email}</p>
           </div>
         </div>
       </div>
@@ -302,6 +307,8 @@ const AccountPage = () => {
   const disclosure = useDisclosure();
   const [selectedKit, setSelectedKit] = useState<UserKit>(userKits[0]);
 
+  const { user } = authStore();
+
   return (
     <div className="container mx-auto px-4 mt-10">
       <div className="flex md:flex-row flex-col text-left mb-10">
@@ -313,14 +320,14 @@ const AccountPage = () => {
         />
         <div className="flex-col ml-6 mt-2">
           <h2 className="text-2xl font-bold text-slate-700">
-            Olá Usuário!
+            Olá {user?.name}!
           </h2>
           <p className="mt-2">
             Aqui você encontra todas as informações relacionadas a sua conta, como acompanhar seus grupos de compra, status de pedidos realizados e muito mais!
           </p>
         </div>
       </div>
-      <UserInfo />
+      <UserInfo user={user} />
       <PurchaseGroups
         setSelectedKit={setSelectedKit}
         openModal={disclosure.onOpen}

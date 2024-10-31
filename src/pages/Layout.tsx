@@ -15,10 +15,12 @@ import {
   FaUser,
   FaHome,
 } from "react-icons/fa";
+import authStore from '../stores/auth';
 
 function Layout() {
   const disclosure = useDisclosure();
   const navigate = useNavigate();
+  const { isLoggedIn } = authStore();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -51,20 +53,40 @@ function Layout() {
               isIconOnly
               onPress={() => navigate('/kit-list')}
             >
-                <FaHome />
+              <FaHome />
             </Button>
-            <Divider
-              className="mx-2 bg-white w-[2px] h-6"
-              orientation="vertical"
-            />
-            <Button
-              variant="bordered"
-              className="text-white border-white"
-              isIconOnly
-              onPress={() => navigate('/user')}
-            >
-                <FaUser />
-            </Button>
+            {isLoggedIn && (
+              <div className="contents">
+                <Divider
+                  className="mx-2 bg-white w-[2px] h-6"
+                  orientation="vertical"
+                />
+                <Button
+                  variant="bordered"
+                  className="text-white border-white"
+                  isIconOnly
+                  onPress={() => navigate('/user')}
+                >
+                  <FaUser />
+                </Button>
+              </div>
+            )}
+            {!isLoggedIn && (
+              <div className="contents">
+                <Divider
+                  className="mx-2 bg-white w-[2px] h-6"
+                  orientation="vertical"
+                />
+                <Button
+                  variant="bordered"
+                  className="text-white border-white"
+                  isIconOnly
+                  onPress={() => navigate('/login')}
+                >
+                  <FaUser />
+                </Button>
+              </div>
+            )}
           </div>
           <div className="contents max-md:hidden">
             <Button
@@ -76,46 +98,52 @@ function Layout() {
             >
               Loja
             </Button>
-            <Divider
-              className="mx-2 bg-white w-[2px] h-6"
-              orientation="vertical"
-            />
-            <Button
-              className="uppercase font-mono text-white text-lg font-medium tracking-widest"
-              color="primary"
-              size="md"
-              variant="light"
-              onPress={() => navigate('/user')}
-            >
-              Minha Conta
-            </Button>
-            {/* teste
-            <Divider
-              className="mx-2 bg-white w-[2px] h-6"
-              orientation="vertical"
-            />
-            <Button
-              className="uppercase font-mono text-white text-lg font-medium tracking-widest"
-              color="primary"
-              size="md"
-              variant="light"
-              onPress={() => navigate('/welcome')}
-            >
-              Login
-            </Button>
-            <Divider
-              className="mx-2 bg-white w-[2px] h-6"
-              orientation="vertical"
-            />
-            <Button
-              className="uppercase font-mono text-white text-lg font-medium tracking-widest"
-              color="primary"
-              size="md"
-              variant="light"
-            >
-              Cadastre-se
-            </Button>
-            */}
+            {isLoggedIn && (
+              <div className="contents">
+                <Divider
+                  className="mx-2 bg-white w-[2px] h-6"
+                  orientation="vertical"
+                />
+                <Button
+                  className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+                  color="primary"
+                  size="md"
+                  variant="light"
+                  onPress={() => navigate('/user')}
+                >
+                  Minha Conta
+                </Button>
+              </div>
+            )}
+            {!isLoggedIn && (
+              <div className="contents">
+                <Divider
+                  className="mx-2 bg-white w-[2px] h-6"
+                  orientation="vertical"
+                />
+                <Button
+                  className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+                  color="primary"
+                  size="md"
+                  variant="light"
+                  onPress={() => navigate('/login')}
+                >
+                  Login
+                </Button>
+                <Divider
+                  className="mx-2 bg-white w-[2px] h-6"
+                  orientation="vertical"
+                />
+                <Button
+                  className="uppercase font-mono text-white text-lg font-medium tracking-widest"
+                  color="primary"
+                  size="md"
+                  variant="light"
+                >
+                  Cadastre-se
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </header>

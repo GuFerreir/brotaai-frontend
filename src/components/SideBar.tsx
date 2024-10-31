@@ -11,7 +11,6 @@ import {
   ModalHeader,
   Listbox,
   ListboxItem,
-  ListboxSection,
 } from "@nextui-org/react";
 import logoInline from '../assets/logoInline.svg';
 import { MdOutlineClose } from "react-icons/md";
@@ -22,6 +21,7 @@ import {
   FaUser,
   FaWpforms,
 } from "react-icons/fa";
+import authStore from '../stores/auth';
 
 const Sidebar = extendVariants(Modal, {
   variants: {
@@ -154,11 +154,64 @@ type SideBarProps = {
 export default function SideBar({ disclosure }: SideBarProps) {
   const { isOpen, onOpenChange, onClose } = disclosure;
   const navigate = useNavigate();
+  const { isLoggedIn, logout } = authStore();
 
   const handleClick = (path: string) => {
-    navigate(path);
-    onClose();
+    if (path === 'logout') {
+      logout();
+      navigate('/login');
+      onClose();
+    } else {
+      navigate(path);
+      onClose();
+    }
   }
+
+  const defaultItems = [
+    {
+      label: 'Loja',
+      startContent: <FaHome className="text-slate-600" />,
+      key: '/kit-list',
+      className: 'py-2',
+    },
+  ];
+
+  const loggedOutItems = [
+    {
+      label: 'Entrar',
+      startContent: <BiSolidLogIn className="text-slate-600" />,
+      key: '/login',
+      className: 'py-2',
+    },
+    {
+      label: 'Registrar',
+      startContent: <FaWpforms className="text-primary" />,
+      key: '/register',
+      className: 'py-2',
+    },
+  ];
+
+  const loggedInItems = [
+    {
+      label: 'Minha Conta',
+      startContent: <FaUser className="text-slate-600" />,
+      key: '/user',
+      className: 'py-2',
+    },
+    {
+      label: 'Sair',
+      startContent: <RxExit className="text-danger" />,
+      key: 'logout',
+      className: 'mt-6 py-2 text-danger',
+    },
+  ];
+
+  const items = [
+    ...defaultItems,
+    ...(!isLoggedIn ? loggedOutItems : []),
+    ...(isLoggedIn ? loggedInItems : []),
+  ];
+
 
   return (
     <div className="flex flex-col gap-2">
@@ -192,53 +245,21 @@ export default function SideBar({ disclosure }: SideBarProps) {
                     aria-label="Actions variants"
                     variant="faded"
                     color="primary"
+                    items={items}
                     onAction={(key) => handleClick(key.toString())}
                   >
-                    <ListboxSection showDivider>
+                    {(item) => (
                       <ListboxItem
-                        key="kit-list"
-                        className="py-2"
-                        startContent={<FaHome className="text-slate-600" />}
+                        key={item.key}
+                        color={item.key === "logout" ? "danger" : "default"}
+                        className={item.className}
+                        startContent={item.startContent}
                         title={<h1 className="font-bold text-md text-slate-600">
-                          Loja
+                          {item.label}
                         </h1>}
-                      />
-                      <ListboxItem
-                        key="user"
-                        className="py-2"
-                        startContent={<FaUser className="text-slate-600" />}
-                        title={<h1 className="font-bold text-md text-slate-600">
-                          Minha Conta
-                        </h1>}
-                      />
-                      <ListboxItem
-                        key="login"
-                        className="py-2"
-                        startContent={<BiSolidLogIn className="text-slate-600" />}
-                        title={<h1 className="font-bold text-md text-slate-600">
-                          Entrar
-                        </h1>}
-                      />
-                      <ListboxItem
-                        key="register"
-                        className="py-2"
-                        startContent={<FaWpforms className="text-primary" />}
-                        title={<h1 className="font-bold text-md text-primary">
-                          Registrar
-                        </h1>}
-                      />
-                    </ListboxSection>
-                    <ListboxSection>
-                      <ListboxItem
-                        key="welcome"
-                        className="py-2 text-danger"
-                        color="danger"
-                        startContent={<RxExit className="" />}
-                        title={<h1 className="font-bold text-md">
-                          Sair
-                        </h1>}
-                      />
-                    </ListboxSection>
+                      >
+                      </ListboxItem>
+                    )}
                   </Listbox>
                 </div>
               </ModalBody>

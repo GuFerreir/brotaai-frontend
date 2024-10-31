@@ -1,18 +1,25 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider, useNavigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import './global.css';
+
+import PrivateRoute from './pages/PrivateRoute';
 
 import Layout from './pages/Layout';
 import KitList from './pages/KitList';
 import Kit from './pages/Kit';
 import UserProfile from './pages/UserProfile';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
     children: [
+      {
+        path: '/login',
+        element: <Login />,
+      },
       {
         path: '/kit-list',
         element: <KitList />,
@@ -23,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/user',
-        element: <UserProfile />,
+        element: (
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },
