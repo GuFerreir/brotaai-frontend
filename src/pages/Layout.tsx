@@ -139,6 +139,7 @@ function Layout() {
                   color="primary"
                   size="md"
                   variant="light"
+                  onPress={() => navigate('/register')}
                 >
                   Cadastre-se
                 </Button>
