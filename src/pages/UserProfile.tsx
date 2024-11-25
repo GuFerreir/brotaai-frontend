@@ -13,6 +13,7 @@ import {
   FaMapMarkerAlt,
   FaEnvelope,
   FaUser,
+  FaPhone,
 } from 'react-icons/fa';
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -77,6 +78,10 @@ const UserInfo = ({ user }: UserInfoProps) => {
           <div className="flex items-center mb-2">
             <FaEnvelope className="text-secondary mr-2 text-xl" />
             <p>{user?.email}</p>
+          </div>
+          <div className="flex items-center mb-2">
+            <FaPhone className="text-secondary mr-2 text-xl" />
+            <p>{user?.phone}</p>
           </div>
         </div>
       </div>

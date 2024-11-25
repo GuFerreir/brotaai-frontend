@@ -23,6 +23,8 @@ const validationSchema = yup.object().shape({
   email: yup.string()
     .email('Email inválido')
     .required('Campo obrigatório'),
+  phone: yup.string()
+    .required('Campo obrigatório'),
   address: yup.string()
     .required('Campo obrigatório'),
   password: yup.string()
@@ -48,6 +50,7 @@ function Register() {
   const handleRegister = ({
     name,
     email,
+    phone,
     address,
     password,
   }: FormData) => {
@@ -55,6 +58,7 @@ function Register() {
       register({
         name,
         email,
+        phone,
         address,
         password,
       });
@@ -75,6 +79,7 @@ function Register() {
           initialValues={{
             name: '',
             email: '',
+            phone: '',
             address: '',
             password: '',
             confirmPassword: '',
@@ -105,6 +110,18 @@ function Register() {
                 value={values.email}
                 onChange={(e) => handleChange('email')(e.target.value)}
                 onBlur={handleBlur('email')}
+              />
+              <Input
+                className="mt-4"
+                variant="bordered"
+                color="primary"
+                type="phone"
+                label="Telefone"
+                isInvalid={errors.phone && touched.phone ? true : false}
+                errorMessage={touched.phone ? errors.phone : null}
+                value={values.phone}
+                onChange={(e) => handleChange('phone')(e.target.value)}
+                onBlur={handleBlur('phone')}
               />
               <Input
                 className="mt-4"

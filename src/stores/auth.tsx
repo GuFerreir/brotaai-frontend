@@ -9,6 +9,7 @@ interface LoginData {
 export interface User {
   name: string;
   email: string;
+  phone: string;
   address: string;
   password: string;
 }
@@ -25,6 +26,7 @@ interface AuthStore {
 const testUser = {
   name: 'Vinicius',
   email: 'teste@teste.com',
+  phone: '11988882188',
   address: 'Rua de São Paulo, nº 0 - São Paulo, SP 00000-000',
   password: 'password',
 }
