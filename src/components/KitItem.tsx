@@ -26,6 +26,7 @@ type Product = {
   image: string;
   maxQuantity: number;
   minQuantity: number;
+  quantity: number;
   description: string;
 };
 
@@ -50,7 +51,7 @@ const images = [
 
 
 export default function TimelineLayout({ product }: KitItemProps) {
-  const [quantity, setQuantity] = useState(product.minQuantity);
+  const [quantity, setQuantity] = useState(product.quantity);
   const { isOpen, onOpen, onClose } = useDisclosure();
   
   const handleUpdate = (value: number) => {

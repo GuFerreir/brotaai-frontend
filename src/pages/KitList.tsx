@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Link,
 } from 'react-router-dom';
@@ -10,26 +10,46 @@ import {
   Image,
 } from '@nextui-org/react';
 
-const kitsList = [
-  {
-    id: 1,
-    name: 'Kit 1',
-    description: 'Quase tudo o que você precisa para um cultivo saudável e lucrativo de Tomate Salada!',
-    price: 100,
-    photo: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fhortas.info%2Fsites%2Fdefault%2Ffiles%2Ffield%2Fimagens%2Ftomate%2Ftomate002.jpg&f=1&nofb=1&ipt=d52bca741c32ed08bad48024152cfcbfe938ce871c38b6d428dfc7b7b5bc7710&ipo=images',
-  },
-  {
-    id: 2,
-    name: 'Kit 2',
-    description: 'Tudo o que você precisa para um cultivo saudável e lucrativo de Tomate Salada!',
-    price: 200,
-    photo: 'https://www.portaldoagronegocio.com.br/storage/images/notices/631e71be79c50.jpg',
-  },
-]
 
 function KitList() {
+  const kitsList = [
+    {
+      id: 1,
+      nome: 'Kit Tomate Salada',
+      descricao: 'Compre o que você precisa para um cultivo saudável e lucrativo!',
+      price: 100,
+      imagemUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fhortas.info%2Fsites%2Fdefault%2Ffiles%2Ffield%2Fimagens%2Ftomate%2Ftomate002.jpg&f=1&nofb=1&ipt=d52bca741c32ed08bad48024152cfcbfe938ce871c38b6d428dfc7b7b5bc7710&ipo=images',
+    },
+  ]
+
+  const handleAreaOnClick = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/kits", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Erro ao criar pedido: ${response.statusText}`);
+      }
+  
+      const allKits = await response.json();
+      console.log("Kits encontrados:", allKits);
+      setKitsListState(allKits);
+    } catch (error) {
+      console.error("Erro ao buscar kits:", error);
+    }
+  };
+  useEffect(() => {
+    handleAreaOnClick();
+  }, []);
+
+  const [kitsListState, setKitsListState] = useState(kitsList);
+
   return (
-    <div className="grid grid-cols-1 w-full p-4">
+    <div className="grid grid-cols-1 w-full p-4" key={JSON.stringify(kitsListState)}>
       {kitsList.map((kit) => (
       <div
         key={kit.id}
@@ -42,7 +62,7 @@ function KitList() {
             <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md-gap-6 items-center justify-center">
               <div className="col-span-6">
                 <p className="text-2xl mt-2 ml-3 font-semibold text-white">
-                  {kit.description}
+                  {kit.descricao}
                 </p>
               </div>
             </div>
@@ -50,7 +70,7 @@ function KitList() {
           <CardFooter className="flex absolute z-20 bottom-0 border-t-1 border-default-600 dark:border-default-100 backdrop-blur-sm">
             <div className="flex flex-grow gap-2 flex-col md:flex-row items-right">
               <div className="flex flex-col w-full text-base font-bold text-white text-right md:text-center">
-                {kit.name}
+                {kit.nome}
               </div>
               <div className="flex flex-col md:flex-0">
                 <Button
@@ -69,7 +89,7 @@ function KitList() {
             removeWrapper
             alt="kit cover"
             className="z-0 w-full min-h-full object-cover"
-            src={kit.photo}
+            src={kit.imagemUrl}
           />
         </Card>
         </div>
